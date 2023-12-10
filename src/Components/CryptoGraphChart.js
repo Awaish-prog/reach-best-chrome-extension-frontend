@@ -21,7 +21,7 @@ export default function CryptoGraphChart({ cryptoGraphData }){
           axisLabel: {
             interval: 0,
             rotate: 50,
-            overflow: 'truncate'
+            overflow: 'truncate',
           },
         },
         series: [
@@ -34,6 +34,7 @@ export default function CryptoGraphChart({ cryptoGraphData }){
         ],
       }; 
       return <div className="graph-container">
-      <ReactEcharts option={option} />
+        <h3>Average Market Caps($)</h3>
+        <ReactEcharts option={option} />
       </div>
 }

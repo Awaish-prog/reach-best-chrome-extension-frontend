@@ -44,10 +44,10 @@ export default function CryptoTable({ cryptoTableData }){
               <StyledTableCell component="th" scope="row">
                 {cryptoTableRow.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{cryptoTableRow.avgMarketCap}</StyledTableCell>
-              <StyledTableCell align="right">{cryptoTableRow.avgPrice}</StyledTableCell>
-              <StyledTableCell align="right">{cryptoTableRow.maxMarketCap}</StyledTableCell>
-              <StyledTableCell align="right">{cryptoTableRow.maxPrice}</StyledTableCell>
+              <StyledTableCell align="right">${cryptoTableRow.avgMarketCap}</StyledTableCell>
+              <StyledTableCell align="right">${cryptoTableRow.avgPrice}</StyledTableCell>
+              <StyledTableCell align="right">${cryptoTableRow.maxMarketCap}</StyledTableCell>
+              <StyledTableCell align="right">${cryptoTableRow.maxPrice}</StyledTableCell>
               </StyledTableRow>
           ))}
         </TableBody>
