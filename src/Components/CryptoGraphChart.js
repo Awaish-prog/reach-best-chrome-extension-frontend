@@ -1,4 +1,5 @@
-import ReactEcharts from "echarts-for-react"; 
+import ReactEcharts from "echarts-for-react";
+import "../CSS/cryptoContainer.css" 
 
 export default function CryptoGraphChart({ cryptoGraphData }){
 
@@ -10,13 +11,18 @@ export default function CryptoGraphChart({ cryptoGraphData }){
           }),
           axisLabel: {
             interval: 0,
-            rotate: 60,
+            rotate: 30,
             overflow: 'truncate'
           },
         },
         
         yAxis: {
-          type: 'value'
+          type: 'value',
+          axisLabel: {
+            interval: 0,
+            rotate: 50,
+            overflow: 'truncate'
+          },
         },
         series: [
           {
@@ -27,5 +33,7 @@ export default function CryptoGraphChart({ cryptoGraphData }){
           }
         ],
       }; 
-      return <ReactEcharts option={option} />;
+      return <div className="graph-container">
+      <ReactEcharts option={option} />
+      </div>
 }

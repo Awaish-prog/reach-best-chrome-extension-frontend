@@ -1,1 +1,16 @@
-
+html, body {
+  width: 800px;
+  height: 700px;
+  overflow-y: scroll;
+  margin: 0;
+  font-size: small;
+  font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

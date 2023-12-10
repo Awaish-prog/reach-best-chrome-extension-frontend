@@ -1,3 +1,10 @@
 {
-
+    "name": "Cryptocurrency Scrapper",
+    "description": "This scrapper shows price and market cap data of top 100 Cryptocurrencies",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_title": "Cryptocurrency Scrapper",
+        "default_popup": "index.html"
+    }
 }

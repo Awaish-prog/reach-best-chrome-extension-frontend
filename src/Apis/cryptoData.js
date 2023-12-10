@@ -1,7 +1,6 @@
-const url = "http://localhost:4040/"
+const url = "https://reach-best.onrender.com/"
 
 export const getCryptodata = async (dateRanges, cryptoCurrencies) => {
-    cryptoCurrencies.push("createdAt")
     const response = await fetch(`${url}getCryptoData`, {
         method: 'POST',
         headers: {

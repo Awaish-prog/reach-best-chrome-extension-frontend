@@ -1,0 +1,112 @@
+.selected-crypto-container {
+    outline: 1px solid gray;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.selected-crypto {
+    display: flex;
+    background-color: rgb(155, 152, 152);
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 5px;
+    gap: 5px;
+    margin: 5px;
+}
+
+.selected-crypto-span {
+    display: flex;
+    align-items: center;
+}
+
+.select-crypto {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.select-crypto > select {
+    width: 320px;
+    padding: 10px;
+    border: none;
+}
+select:active{
+    outline: none;
+    border: none;
+}
+.select-crypto > span {
+    position: relative;
+    right: 35px;
+    top: 5px;
+}
+
+.selected-crypto-item {
+    margin: 5px;
+}
+
+.graph-container {
+    margin: 10px;
+    
+}
+
+.crypto-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.date-ranges-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    font-size: medium;
+}
+
+.date-ranges-input {
+    margin-left: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.close-icon {
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    background-color: black;
+}
+
+.plus-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(106, 106, 240);
+    border-radius: 50%;
+    width: fit-content;
+    padding: 3px;
+    margin: 10px;
+    margin-left: 600px;
+    cursor: pointer;
+}
+
+.plus-icon:hover {
+    background-color: blue;
+}

@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import CryptoScrapperInputs from "./Components/CryptoScrapperInputs";
 import { getCryptocurrencies, getCryptodata } from "./Apis/cryptoData";
 import CryptoDataContainer from "./Components/CryptoDataContainer";
+import CircularProgress from '@mui/material/CircularProgress';
+import "./index.css"
 
 function App() {
   const [ cryptoCurrenciesData, setCryptoCurrenciesData ] = useState(null)
   const [ cryptoCurrenciesList, setCryptoCurrenciesList ] = useState([])
   const [selectedValues, setSelectedValues] = useState([]);
+  const [ errorMessage, setErrorMessage ] = useState("")
+  const [ isLoading, setIsLoading ] = useState(false)
   const [ dateRanges, setDateRanges ] = useState([{
     id: 1,
     startDate: "",
@@ -42,8 +46,9 @@ function App() {
   }
 
   const handleSelectChange = (event) => {
-    if (event.target.value && !selectedValues.includes(event.target.value)) {
-      setSelectedValues([...selectedValues, event.target.value]);
+    console.log(selectedValues);
+    if (event.target.value[event.target.value.length - 1] && !selectedValues.includes(event.target.value[event.target.value.length - 1])) {
+      setSelectedValues([...selectedValues, event.target.value[event.target.value.length - 1]]);
     }
   };
 
@@ -52,19 +57,27 @@ function App() {
   };
 
   const getCryptocurrenciesData = async () => {
+    setErrorMessage("")
     if(!selectedValues.length){
-      console.log("Failed...");
+      setErrorMessage("Please select atleast 1 cryptocurrency")
       return
     }
     for(let i = 0; i < dateRanges.length; i++){
       if(!dateRanges[i].startDate || !dateRanges[i].endDate){
-        console.log("Failed...");
+        setErrorMessage("Please select dates in all added date ranges")
         return
       }
     }
+    setErrorMessage("")
+    setIsLoading(true)
     const cryptoData = await getCryptodata(dateRanges, selectedValues)
-    console.log(cryptoData);
-    setCryptoCurrenciesData(cryptoData.cryptoTableData)
+    if(cryptoData.status === 200){
+      setCryptoCurrenciesData(cryptoData.cryptoTableData)
+    }
+    else{
+      setErrorMessage("Failed to Load Data")
+    }
+    setIsLoading(false)
   }
 
   const getCryptocurrenciesList = async () => {
@@ -78,9 +91,15 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Cryptocurrency Prices by Market Cap</h1>
+      {errorMessage && <p style={{color: 'red', textAlign: 'center'}} >{errorMessage}</p>}
       <CryptoScrapperInputs handleSelectChange = {handleSelectChange} handleRemoveClick = {handleRemoveClick} selectedValues = {selectedValues} dateRanges = {dateRanges} handleStartDateChange = {handleStartDateChange} handleEndDateChange = {handleEndDateChange} handleAddDateRange = {handleAddDateRange} handleDeletedateRange = {handleDeletedateRange} getCryptocurrenciesData = {getCryptocurrenciesData} cryptoCurrenciesList = {cryptoCurrenciesList} />
 
-      {cryptoCurrenciesData && <CryptoDataContainer cryptoCurrenciesData = {cryptoCurrenciesData} />}
+      {
+      isLoading ?
+      <div className="loader-container" ><CircularProgress /></div>
+      :
+      cryptoCurrenciesData && <CryptoDataContainer cryptoCurrenciesData = {cryptoCurrenciesData} />}
     </div>
   );
 }
