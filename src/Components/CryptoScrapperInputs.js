@@ -35,7 +35,7 @@ export default function CryptoScrapperInputs({handleSelectChange, handleRemoveCl
         </Select>
         </FormControl>
         </div>
-        <div>
+        <div className='date-ranges-container'>
         <h2>Select Date Ranges</h2>
         <div className='date-ranges-input-container'>
         {

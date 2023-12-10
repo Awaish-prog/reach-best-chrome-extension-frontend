@@ -1,4 +1,4 @@
-const url = "https://reach-best.onrender.com/"
+const url = "http://localhost:4040/"
 
 export const getCryptodata = async (dateRanges, cryptoCurrencies) => {
     const response = await fetch(`${url}getCryptoData`, {
